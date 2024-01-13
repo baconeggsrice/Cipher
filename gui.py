@@ -6,7 +6,7 @@ class guiFrame(wx.Frame):
         panel = wx.Panel(self)
         self.InitUI(panel)
         self.msgToEncode(panel)
-        self.letters = {1:'', 2:''}
+        self.info = {1:'', 2:'', 3:''}
 
     def InitUI(self,panel):
 
@@ -19,6 +19,7 @@ class guiFrame(wx.Frame):
     def msgToEncode(self, panel): #Temp for message submission
         self.text_ctrl = wx.TextCtrl(panel, pos = (5,35))
         self.button = wx.Button(panel, label = "Generate", pos = (5,60))
+        self.button.Bind(wx.EVT_BUTTON, self.ctrlBoxTriggered)
         self.msgSt = wx.StaticText(panel, label = 'test', pos=(5,85))
 
     def ShowMessage(self):
@@ -37,18 +38,18 @@ class guiFrame(wx.Frame):
         letter1 = guiFrame.GetString()
         print(letter1)
         self.st1.SetLabel(letter1)
-        self.letters[1] = letter1
+        self.info[1] = letter1
         #print(self.letters)
 
     def box2Triggered(self, guiFrame):
         letter2 = guiFrame.GetString()
         print(letter2)
         self.st2.SetLabel(letter2)
-        self.letters[2] = letter2
+        self.info[2] = letter2
         #print(self.letters)
 
-    def ctrlBoxTriggered(self, guiFrame):
-        msg = guiFrame.GetString()
+    def ctrlBoxTriggered(self, event):
+        msg = self.text_ctrl.GetValue()
         print(msg)
         self.msgSt.SetLabel(msg)
 
@@ -56,7 +57,7 @@ def main():
     app = wx.App()
     frame = guiFrame(None)
     frame.Show()
-    print(frame.letters)
+    print(frame.info)
     app.MainLoop()
 
 if __name__ == '__main__':
