@@ -1,18 +1,18 @@
-def main():
-    ceasar = initialize()
-    message = encoded(ceasar)
+def cipherMain(initial, final, msg):
+    ceasar = initialize(initial, final)
+    message = encoded(ceasar,msg)
     print(message)
     
-def initialize():    
+def initialize(initial, final):    
     alphabet = list('abcdefghijklmnopqrstuvwxyz')
     alphaMap = createAlphaMap(alphabet)
-    initial = input('choose starting letter: ').lower()
-    final = input('choose letter you want to shift to: ').lower()
+    #initial = input('choose starting letter: ').lower()
+    #final = input('choose letter you want to shift to: ').lower()
     ceasar = createCeasarMap(alphabet, initial, final, alphaMap)
     return ceasar
 
-def encoded(ceasar):
-    message = input("Choose a message to encode: ")
+def encoded(ceasar,msg):
+    message = msg #input("Choose a message to encode: ")
     encoded = ''
     for ch in message:
         upper = False
@@ -46,19 +46,10 @@ def shift(shiftMap, initial, final, alphaMap):
     intIndex = alphaMap[initial]
     finIndex = alphaMap[final]
     change = finIndex - intIndex
-    if change > 0: #Shift forward
-        for i in shiftMap:
-            shiftMap[i] += change
-            if shiftMap[i] > 26:
-                shiftMap[i] -= 26
-    elif change < 0: #Shift back
-        for i in shiftMap:
-            shiftMap[i] += change
-            if shiftMap[i] < 1:
-                shiftMap[i] += 26 
-    else:
-        return shiftMap
+    for i in shiftMap:
+        shiftMap[i] += change
+        if shiftMap[i] > 26:
+            shiftMap[i] -= 26
+        elif shiftMap[i] < 1:
+            shiftMap[i] += 1
     return shiftMap
-
-if __name__ == "__main__":
-    main()
