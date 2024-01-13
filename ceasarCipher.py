@@ -1,3 +1,13 @@
+import wx
+from gui import guiFrame
+
+def main():
+    #cipherMain(initial, final, msg)
+    app = wx.App(False)
+    frame = guiFrame(None, title = 'Cipher', size = (300,200))
+    frame.Show()
+    app.MainLoop()
+
 def cipherMain(initial, final, msg):
     ceasar = initialize(initial, final)
     message = encoded(ceasar,msg)
@@ -53,3 +63,6 @@ def shift(shiftMap, initial, final, alphaMap):
         elif shiftMap[i] < 1:
             shiftMap[i] += 1
     return shiftMap
+
+if __name__ == '__main__':
+    main()
