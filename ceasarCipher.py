@@ -2,7 +2,7 @@ def cipherMain(info):
     initial, final, msg = info[1], info[2], info[3]
     ceasar = initialize(initial, final)
     message = encoded(ceasar,msg)
-    print(message)
+    return message
     
 def initialize(initial, final):    
     alphabet = list('abcdefghijklmnopqrstuvwxyz')
@@ -24,6 +24,22 @@ def encoded(ceasar,msg):
         else:
             encoded += ch
     return encoded
+
+def decode(ceasar, msg):
+    decoded = ''
+    ceasarKey = dict((index, letter) for (letter, index) in ceasar.items())
+    for ch in msg:
+        upper = False
+        if ch.isupper():
+            upper = True
+        if ch.lower() in ceasarKey:
+            if upper:
+                decoded += (ceasarKey[ch.lower()]).upper()
+            else:
+                decoded += ceasarKey[ch]
+        else:
+            decoded += ch
+    return decoded
 
 def createAlphaMap(alphabet):
     alphabetMap = {}
@@ -49,5 +65,5 @@ def shift(shiftMap, initial, final, alphaMap):
         if shiftMap[i] > 26:
             shiftMap[i] -= 26
         elif shiftMap[i] < 1:
-            shiftMap[i] += 1
+            shiftMap[i] += 26
     return shiftMap
