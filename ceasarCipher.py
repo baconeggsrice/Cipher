@@ -6,9 +6,14 @@ def main():
     app = wx.App(False)
     frame = guiFrame(None, title = 'Cipher', size = (300,200))
     frame.Show()
+    if frame.clicked == True:
+        info = frame.info
+        print(info)
+        cipherMain(info)
     app.MainLoop()
 
-def cipherMain(initial, final, msg):
+def cipherMain(info):
+    initial, final, msg = info[1], info[2], info[3]
     ceasar = initialize(initial, final)
     message = encoded(ceasar,msg)
     print(message)
