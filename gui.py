@@ -1,4 +1,5 @@
 import wx
+import ceasarCipher
 
 class guiFrame(wx.Frame):
     def __init__(self,*args, **kwargs):
@@ -57,6 +58,7 @@ class guiFrame(wx.Frame):
         self.info[3] = msg
         #print(self.info)
         print(self.clicked)
+        ceasarCipher.cipherMain(self.info)
 
 
 def main():
