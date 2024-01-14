@@ -38,14 +38,12 @@ class guiFrame(wx.Frame):
 
     def box1Triggered(self, guiFrame):
         letter1 = guiFrame.GetString()
-        #print(letter1)
         self.st1.SetLabel(letter1)
         self.info[1] = letter1
         print(self.clicked)
 
     def box2Triggered(self, guiFrame):
         letter2 = guiFrame.GetString()
-        #print(letter2)
         self.st2.SetLabel(letter2)
         self.info[2] = letter2
         print(self.clicked)
@@ -53,10 +51,8 @@ class guiFrame(wx.Frame):
     def ctrlBoxTriggered(self, event):
         msg = self.text_ctrl.GetValue()
         self.clicked = True
-        #print(msg)
         self.msgSt.SetLabel(msg)
         self.info[3] = msg
-        #print(self.info)
         print(self.clicked)
         ceasarCipher.cipherMain(self.info)
 
