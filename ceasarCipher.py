@@ -7,15 +7,12 @@ def cipherMain(info):
 def initialize(initial, final):    
     alphabet = list('abcdefghijklmnopqrstuvwxyz')
     alphaMap = createAlphaMap(alphabet)
-    #initial = input('choose starting letter: ').lower()
-    #final = input('choose letter you want to shift to: ').lower()
     ceasar = createCeasarMap(alphabet, initial, final, alphaMap)
     return ceasar
 
 def encoded(ceasar,msg):
-    message = msg #input("Choose a message to encode: ")
     encoded = ''
-    for ch in message:
+    for ch in msg:
         upper = False
         if ch.isupper():
             upper = True
