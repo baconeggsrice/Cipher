@@ -3,6 +3,12 @@ def cipherMain(info):
     ceasar = initialize(initial, final)
     message = encoded(ceasar,msg)
     return message
+
+def decoding(decodeInfo):
+    initial, final, msg = decodeInfo[1], decodeInfo[2], decodeInfo[2]
+    ceasar = initialize(initial, final)
+    decodedMsg = decode(ceasar, msg)
+    return decodedMsg
     
 def initialize(initial, final):    
     alphabet = list('abcdefghijklmnopqrstuvwxyz')
@@ -48,6 +54,8 @@ def createAlphaMap(alphabet):
     return alphabetMap
 
 def createCeasarMap(alphabet, initial, final, alphaMap): #initial is the starting point, final is the desired number.
+    if initial == final:
+        return alphaMap
     shiftMap = createAlphaMap(alphabet)
     shifts = shift(shiftMap, initial, final, alphaMap)
     ceasar = {}
