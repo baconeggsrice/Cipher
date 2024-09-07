@@ -8,7 +8,8 @@ class guiFrame(wx.Frame):
         self.InitUI(panel)
         self.msgToEncode(panel)
         self.msgToDecode(panel)
-        self.info = {1:'', 2:'', 3:'', 4: '', 5: '', 6: ''}
+        self.info = {1:'', 2:'', 3:''}
+        self.decodeInfo = {1:'', 2:'', 3:''}
         self.clicked = False
         self.message = ''
 
@@ -75,24 +76,24 @@ class guiFrame(wx.Frame):
 
     def box3Triggered(self, guiFrame):
         letter3 = guiFrame.GetString()
-        self.info[4] = letter3
+        self.decodeInfo[1] = letter3
         print(self.clicked)
-        print(self.info)
+        print(self.decodeInfo)
 
     def box4Triggered(self, guiFrame):
         letter4 = guiFrame.GetString()
-        self.info[5] = letter4
+        self.decodeInfo[2] = letter4
         print(self.clicked)
-        print(self.info)
+        print(self.decodeInfo)
 
     def decodeBoxTriggered(self, event):
-        msg = self.text_ctrl.GetValue()
+        dmsg = self.text_ctrl.GetValue()
         self.clicked = True
-        self.info[6] = msg
+        self.decodeInfo[3] = dmsg
         print(self.clicked)
-        print(self.info)
-        self.message = ceasarCipher.decoding(self.info)
-        print(self.message, msg)
+        print(self.decodeInfo)
+        self.message = ceasarCipher.decoding(self.decodeInfo)
+        print(self.message, dmsg)
         wx.CallLater(1000, self.ShowDecoded)
 
     def ShowDecoded(self):

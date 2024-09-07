@@ -5,7 +5,7 @@ def cipherMain(info):
     return message
 
 def decoding(decodeInfo):
-    initial, final, msg = decodeInfo[1], decodeInfo[2], decodeInfo[2]
+    initial, final, msg = decodeInfo[1], decodeInfo[2], decodeInfo[3]
     ceasar = initialize(initial, final)
     decodedMsg = decode(ceasar, msg)
     return decodedMsg
