@@ -63,7 +63,7 @@ class guiFrame(wx.Frame):
 
      ###### DECODING ########
     def msgToDecode(self, panel): #Temp for message submission
-        self.text_ctrl = wx.TextCtrl(panel, pos = (5,140))
+        self.decode_ctrl = wx.TextCtrl(panel, pos = (5,140))
         self.button = wx.Button(panel, label = "Decode", pos = (5,165))
         self.button.Bind(wx.EVT_BUTTON, self.decodeBoxTriggered)   
 
@@ -87,7 +87,7 @@ class guiFrame(wx.Frame):
         print(self.decodeInfo)
 
     def decodeBoxTriggered(self, event):
-        dmsg = self.text_ctrl.GetValue()
+        dmsg = self.decode_ctrl.GetValue()
         self.clicked = True
         self.decodeInfo[3] = dmsg
         print(self.clicked)
