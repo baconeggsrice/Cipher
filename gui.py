@@ -8,6 +8,8 @@ class guiFrame(wx.Frame):
         self.InitUI(panel)
         self.msgToEncode(panel)
         self.msgToDecode(panel)
+        self.encodeLabel = wx.StaticText(panel, label = "ENCODE:", pos = (15,5))
+        self.decodeLabel = wx.StaticText(panel, label = "DECODE:", pos = (15,115))
         self.info = {1:'', 2:'', 3:''}
         self.decodeInfo = {1:'', 2:'', 3:''}
         self.clicked = False
@@ -16,13 +18,13 @@ class guiFrame(wx.Frame):
     def InitUI(self,panel):
         self.comboBox(panel)
         self.decodeComboBox(panel)
-        self.SetSize((300, 250))
+        self.SetSize((300, 275))
         self.SetTitle('Message box')
         self.Centre()
 
     def msgToEncode(self, panel): #Temp for message submission
-        self.text_ctrl = wx.TextCtrl(panel, pos = (5,35))
-        self.button = wx.Button(panel, label = "Generate", pos = (5,60))
+        self.text_ctrl = wx.TextCtrl(panel, pos = (5,60))
+        self.button = wx.Button(panel, label = "Generate", pos = (5,85))
         self.button.Bind(wx.EVT_BUTTON, self.ctrlBoxTriggered)
 
     def ShowMessage(self):
@@ -30,8 +32,8 @@ class guiFrame(wx.Frame):
 
     def comboBox(self, panel):
         alphabet = list("abcdefghijklmnopqrstuvwxyz")
-        box1 = wx.ComboBox(panel, pos=(5,5), choices = alphabet, style=wx.CB_READONLY)
-        box2 = wx.ComboBox(panel, pos=(55,5), choices = alphabet, style=wx.CB_READONLY)
+        box1 = wx.ComboBox(panel, pos=(5,25), choices = alphabet, style=wx.CB_READONLY)
+        box2 = wx.ComboBox(panel, pos=(55,25), choices = alphabet, style=wx.CB_READONLY)
         box1.Bind(wx.EVT_COMBOBOX, self.box1Triggered)
         box2.Bind(wx.EVT_COMBOBOX, self.box2Triggered)
 
@@ -63,14 +65,14 @@ class guiFrame(wx.Frame):
 
      ###### DECODING ########
     def msgToDecode(self, panel): #Temp for message submission
-        self.decode_ctrl = wx.TextCtrl(panel, pos = (5,140))
-        self.button = wx.Button(panel, label = "Decode", pos = (5,165))
+        self.decode_ctrl = wx.TextCtrl(panel, pos = (5,170))
+        self.button = wx.Button(panel, label = "Decode", pos = (5,195))
         self.button.Bind(wx.EVT_BUTTON, self.decodeBoxTriggered)   
 
     def decodeComboBox(self, panel):
         alphabet = list("abcdefghijklmnopqrstuvwxyz")
-        box3 = wx.ComboBox(panel, pos=(5,105), choices = alphabet, style=wx.CB_READONLY)
-        box4 = wx.ComboBox(panel, pos=(55,105), choices = alphabet, style=wx.CB_READONLY)
+        box3 = wx.ComboBox(panel, pos=(5,135), choices = alphabet, style=wx.CB_READONLY)
+        box4 = wx.ComboBox(panel, pos=(55,135), choices = alphabet, style=wx.CB_READONLY)
         box3.Bind(wx.EVT_COMBOBOX, self.box3Triggered)
         box4.Bind(wx.EVT_COMBOBOX, self.box4Triggered)
 
